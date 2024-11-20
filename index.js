@@ -33,6 +33,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 const HOST = process.env.HOST || "127.0.0.1";
 
+/*
 const app = http
   .createServer((req, res) => {
     // console.log(req)
@@ -46,3 +47,29 @@ const app = http
     else res.end("<h1>Undefined url</h1>");
   })
   .listen(PORT, () => console.log(`server runned http://${HOST}:${PORT}`));
+*/
+
+/*
+const app = http.createServer((req, res) => {
+    if (req.url == "/" && req.method =="GET") {
+      res.write("message1 ");
+      res.write("message2 ");
+      res.write("message3 ");
+    }
+    else if(req.method=="POST") {
+        // res.statusCode=201
+        // res.statusMessage="Tamam"
+        res.writeHead(201,"tamam")
+        res.write("method POST")
+    }
+        res.end()
+    }).listen(PORT, () => console.log(`server runned http://${HOST}:${PORT}`));
+*/
+
+const app = http.createServer((req, res) => {
+  const obj = {
+    isim:"baydar",
+    message:"Merhaba"
+  }
+        res.end(JSON.stringify(obj))
+    }).listen(PORT, () => console.log(`server runned http://${HOST}:${PORT}`));
