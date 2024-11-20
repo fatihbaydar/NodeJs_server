@@ -30,11 +30,19 @@ const app = http.createServer((req,res) => {
 */
 
 require("dotenv").config();
-const PORT = process.env.PORT || 8000
-const HOST = process.env.HOST || "127.0.0.1"
+const PORT = process.env.PORT || 8000;
+const HOST = process.env.HOST || "127.0.0.1";
 
 const app = http
   .createServer((req, res) => {
-    res.end("<h1>hello nodejs</h1>");
+    // console.log(req)
+
+    if (req.url == "/") 
+        if(req.method =="GET") 
+            res.end("<h1>Home Page</h1>");
+        else
+        res.end("<h1>Unsuccessful method </h1>");
+    else if (req.url == "/user") res.end("<h1>User Page</h1>");
+    else res.end("<h1>Undefined url</h1>");
   })
   .listen(PORT, () => console.log(`server runned http://${HOST}:${PORT}`));
